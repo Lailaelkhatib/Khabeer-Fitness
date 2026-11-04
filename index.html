@@ -119,19 +119,93 @@
 
 <div id="adPopup" class="popupoverlay hidden">
 <div class="popupcontent">
-<h3>🎁 Special Khabeer Flash Drop!</h3>
+<h3> Special Khabeer Flash Drop!</h3>
 <p id="popupText">Loading exclusive offer...</p>
 <button class="actionbtn" onclick="closePopup()">Claim & Close</button>
 </div>
 </div>
 
+<script>
+let modeToggleButton = document.getElementById("modeToggle");
+modeToggleButton.addEventListener("click", function() {
+ document.body.classList.toggle("darkmode");
+});
+function showAlert() {
+ alert("Welcome to Khabeer Fitness! Scroll down to explore our exclusive verified discount codes.");
+  }
+function scrollToSection(sectionId) {
+   document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+ }
 
 
+let dealsList = [
+            {
+   title: "Gold's Gym Pass",
+ discount: "30% OFF",
+    price: "900 EGP",
+   image: "Gold's Gym Alliance.jpg"
+ },
+ {
+  title: "Weekly Healthy Meal Box",
+ discount: "20% OFF",
+ price: "600 EGP",
+ image: "Certified clinical nutritionists managing macro-balanced weekly meal schedules..jpg"
+ },
+ {
+ title: "Whey Protein Isolate",
+discount: "15% OFF",
+ price: "1200 EGP",
+ image: "Whey Protein Isolate.jpg"}
+        ];
 
 
+     let container = document.getElementById("dealsContainer");
+ for (let i = 0; i < dealsList.length; i++) {
+    container.innerHTML += `
+    <div class="itemcard">
+   <img class="cardimage" src="${dealsList[i].image}" alt="Deal Image">
+  <h3>${dealsList[i].title}</h3>
+   <p style="color: var(--maincolor); font-weight: bold;">${dealsList[i].discount}</p>
+   <p>Price: ${dealsList[i].price}</p>
+   <button class="actionbtn" onclick="claimDeal()">Claim Voucher</button>
+    </div>
+            `;
+        }
 
+  function claimDeal() {
+ alert("Voucher claimed successfully! Show this confirmation at the partner venue.");
+        }
 
+ window.addEventListener("load", function() {
+ let adsArray = [
+   " Flash Deal: Extra 20% OFF on all supplement store orders today!",
+    " Lucky Drop: Free branded shaker bottle with your first healthy meal subscription!",
+  " Evening Special: Free delivery across Cairo for all monthly diet packages!"
+            ];
 
+  let randomNumber = Math.floor(Math.random() * adsArray.length);
+  let selectedAd = adsArray[randomNumber];
 
+     setTimeout(function() {
+    document.getElementById("popupText").innerHTML = selectedAd;
+    document.getElementById("adPopup").classList.remove("hidden");
+            }, 2000);
+        });
 
+ function closePopup() {
+    document.getElementById("adPopup").classList.add("hidden");
+    }
+    </script>
 </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
